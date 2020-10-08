@@ -1,25 +1,44 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import {BrowserRouter,  Switch,  Route,  Link, NavLink} from 'react-router-dom';
+import Carro from './components/Carro.jsx';
+import Tienda from './components/Tienda.jsx';
+import FormCompra from  './components/FormCompra'
+import './css/App.css';
+import LogoBanner from './images/imagen21.jpg';
+import Departamentos from './components/Departamentos';
+import Ciudades from './components/Ciudades';
 function App() {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <div className= "App">
+      <div className="Banner">
+        <div className="center-image">
+          <img
+            src={LogoBanner}
+            alt={LogoBanner}
+            className="imageBanner"
+            
+          ></img>
+        </div>
+        <nav className="navbar navbar-dark">
+          <NavLink to="/Tienda" className="navbar-brand"><a className="ItemHover">Tienda</a></NavLink>
+          <NavLink to="/Carro" className="navbar-brand" activeClassName="active"><a className="ItemHover">Carrito</a></NavLink>
+          {
+          //<NavLink to="/Compra" className="navbar-brand" activeClassName="active"><a className="ItemHover">Datos</a></NavLink>   
+          }              
+        </nav>  
+      </div>
+      <Switch>
+        <Route path="/Tienda" exact component={Tienda}/>
+        <Route path="/Carro" component={Carro}/>
+        <Route path="/Compra" component={FormCompra}/>
+        <Route path="/" exact component={Tienda}/>
+      </Switch>
+      <Departamentos></Departamentos>
+      <Ciudades></Ciudades>
+    </div>    
+    </BrowserRouter>
   );
 }
 
