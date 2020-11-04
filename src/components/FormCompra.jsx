@@ -1,4 +1,5 @@
 import React,{Fragment, useState} from 'react';
+import md5 from 'md5';
 import '../css/App.css';
 import Footer from './Footer';
 
@@ -9,7 +10,8 @@ const FormCompra  = ()  => {
     let infoPedido =    localStorage.getItem('pedidoCompleto');
     let pedido  =   JSON.parse(infoPedido);  
     let amount = pedido.totalPagar; 
-    let signature = ["ME7cLWx8UCl5f7kZo592rk0Bug"+"~"+898269+"~"+referenciaPago+"~"+amount+"~"+"COP"];
+    let signature = md5("ME7cLWx8UCl5f7kZo592rk0Bug"+"~"+898269+"~"+referenciaPago+"~"+amount+"~"+"COP");
+    //["ME7cLWx8UCl5f7kZo592rk0Bug"+"~"+898269+"~"+referenciaPago+"~"+amount+"~"+"COP"];
     console.log('FIRMA----->>>', signature);
     let validacion = true;
     let RecuperaDepartamentos   =   localStorage.getItem('ListaDepartamentos');
