@@ -95,7 +95,13 @@ const Carro             =   (props)  =>  {
             </Fragment>
         ]
     }else{
-        TablaTotal  =   [];
+        TablaTotal  =   [
+            <Fragment>
+                <hr></hr>
+                <p className="CarroVacio" id = "Total">¡Tu Carrito de Compras esta Vacío!</p>
+            </Fragment>
+        ];
+        Table = [];
     }
     let Pagar = [];
     let style = {

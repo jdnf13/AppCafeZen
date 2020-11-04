@@ -5,10 +5,10 @@ import {Switch,  Route, NavLink} from 'react-router-dom';
 import Carro from '../components/Carro';
 import Carrusel from '../components/Carrusel'
 import Card from '../components/Card'
-import Slider1 from '../images/imagen2.jpg';
-import Slider2 from '../images/imagen3.jpg';
-import Slider3 from '../images/Banner1.jpg';
-import Slider4 from '../images/imagen2.jpg';
+import Slider1 from '../images/CAFE_ZEN.jpg';
+import Slider2 from '../images/cafe1.jpg';
+import Slider3 from '../images/DSC_0305.jpg';
+import Slider4 from '../images/DSC_0319.jpg';
 import Footer from '../components/FooterInicio';
 let CarroDeCompras  =   [];
 localStorage.setItem('articulos',JSON.stringify(CarroDeCompras));
@@ -85,50 +85,74 @@ const Tienda    =   ()  =>  {
         {
             idArticulo : 1,
             nProducto:'Blend Premium 500g',
-            pProducto:20800,
+            pProducto:20650,
             imgProducto:Slider1
         },
         {
             idArticulo : 6,
-            nProducto:'Tradicional 2500g',
-            pProducto:70800,
-            imgProducto:Slider1
+            nProducto:'Bled Premium 250g',
+            pProducto:11250,
+            imgProducto:Slider2
         },
         {
             idArticulo : 2,
-            nProducto:'Blend Premium 250g',
-            pProducto:16800,
-            imgProducto:Slider1
+            nProducto:'Blend Premium 125g',
+            pProducto:6000.0,
+            imgProducto:Slider3
         },
         {
             idArticulo : 3,
-            nProducto:'Blend Premium 125g',
-            pProducto:6800.0,
-            imgProducto:Slider3
+            nProducto:'Blend Premium 2500g',
+            pProducto:97350,
+            imgProducto:Slider4
         },
         {
             idArticulo : 4,
-            nProducto:'Blend Premium 2500g',
-            pProducto:99800,
-            imgProducto:Slider3
+            nProducto:'Tradicional 125g',
+            pProducto:5760.0,
+            imgProducto:Slider1
         },
         {
             idArticulo : 5,
-            nProducto:'Tradicional 125g',
-            pProducto:5800.0,
-            imgProducto:Slider3
+            nProducto:'Tradicional 250g',
+            pProducto:10800,
+            imgProducto:Slider2
         },
         {
             idArticulo : 7,
-            nProducto:'Albania 125g',
-            pProducto:6800.0,
-            imgProducto:Slider1
+            nProducto:'Tradicional 500g',
+            pProducto:19800,
+            imgProducto:Slider3
         },
         {
             idArticulo : 8,
-            nProducto:'Albania 2500g',
-            pProducto:99800,
+            nProducto:'Tradicional 2500g',
+            pProducto:97200,
+            imgProducto:Slider4
+        },
+        {
+            idArticulo : 9,
+            nProducto:'Albania 125g',
+            pProducto:4200.0,
             imgProducto:Slider1
+        },
+        {
+            idArticulo : 10,
+            nProducto:'Albania 250g',
+            pProducto:8300,
+            imgProducto:Slider2
+        },
+        {
+            idArticulo : 11,
+            nProducto:'Albania 500g',
+            pProducto:15000,
+            imgProducto:Slider3
+        },
+        {
+            idArticulo : 12,
+            nProducto:'Albania 2500g',
+            pProducto:66500,
+            imgProducto:Slider4
         }
     ];
     /////////////////////////////////////////////////////////////////////////////////////////////
@@ -166,7 +190,7 @@ const Tienda    =   ()  =>  {
     return(
         <div>
             <div className="container">
-                <h3>Tienda Virtual{ /*Café Zen*/}</h3>
+                <h3>Tienda Virtual Café Zen</h3>
             </div>           
             <div className="carritoCompras">
                 <div className="borderCarrito">

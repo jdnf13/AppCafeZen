@@ -4,7 +4,7 @@ import Carro from './components/Carro.jsx';
 import Tienda from './components/Tienda.jsx';
 import FormCompra from  './components/FormCompra'
 import './css/App.css';
-import LogoBanner from './images/imagen21.jpg';
+import LogoBanner from './images/logobanner4.png';
 import Departamentos from './components/Departamentos';
 import Ciudades from './components/Ciudades';
 function App() {
@@ -24,6 +24,7 @@ function App() {
         <nav className="navbar navbar-dark">
           <NavLink to="/Tienda" className="navbar-brand"><a className="ItemHover">Tienda</a></NavLink>
           <NavLink to="/Carro" className="navbar-brand" activeClassName="active"><a className="ItemHover">Carrito</a></NavLink>
+         {/*<a className="ItemHoverInicio" href="http://127.0.0.1:5500/index.html">Inicio</a>*/}
           {
           //<NavLink to="/Compra" className="navbar-brand" activeClassName="active"><a className="ItemHover">Datos</a></NavLink>   
           }              

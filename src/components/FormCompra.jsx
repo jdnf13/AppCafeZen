@@ -7,7 +7,10 @@ const FormCompra  = ()  => {
     
     let referenciaPago  =  parseInt(Math.random() * (1 - 999999999) + 999999999);//Metodo para crear referencias de pago de numeros aleatorios
     let infoPedido =    localStorage.getItem('pedidoCompleto');
-    let pedido  =   JSON.parse(infoPedido);   
+    let pedido  =   JSON.parse(infoPedido);  
+    let amount = pedido.totalPagar; 
+    let signature = ["ME7cLWx8UCl5f7kZo592rk0Bug"+"~"+898269+"~"+referenciaPago+"~"+amount+"~"+"COP"];
+    console.log('FIRMA----->>>', signature);
     let validacion = true;
     let RecuperaDepartamentos   =   localStorage.getItem('ListaDepartamentos');
     let Departamentos   =   JSON.parse(RecuperaDepartamentos);
@@ -46,12 +49,26 @@ const FormCompra  = ()  => {
     }
     
     const onClickFinalizarPedido = (event)  =>  {
-        /**
-         *  <input name="shippingAddress" value={infoCliente.direccionCliente} type="hidden" className="form-control"></input>
-            <input name="shippingCity"    type="hidden"  value={infoCliente.ciudadCliente}></input>
-            <input name="shippingCountry"    type="hidden"  value="CO"></input>
-         */
+       
         //////////////// Metodo para obtener el texto del select a partir del id
+        let ObjetoEnviado = {
+            merchantId: document.getElementById("merchantId").value,
+            apiKey: document.getElementById("apiKey").value,
+            accountId:document.getElementById("accountId").value,
+            referenceCode:document.getElementById("referenceCode").value,
+            usuarioId:document.getElementById("usuarioId").value,
+            description:document.getElementById("description").value,
+            amount:document.getElementById("amount").value,
+            currency:document.getElementById("currency").value,
+            tax:document.getElementById("tax").value,
+            taxReturnBase:document.getElementById("taxReturnBase").value,
+            responseUrl:document.getElementById("responseUrl").value,
+            confirmationUrl:document.getElementById("confirmationUrl").value,
+            shippingCountry:document.getElementById("shippingCountry").value,
+            signature:document.getElementById("signature").value,
+        }
+        localStorage.setItem('DatosPayU', JSON.stringify(ObjetoEnviado));
+
         let combo    =   document.getElementById("inputDepartamento");
         let selected    =   combo.options[combo.selectedIndex].text;
         ////////////////////////////////////////////////////////////////////////        
@@ -75,14 +92,14 @@ const FormCompra  = ()  => {
         let pagoCliente    =   '';
         //Array para almacenar el valor de los campos y enviar al Pedido
         let infoCliente=    [
-            nombreCliente = document.getElementById("inputNombre").value,
+            nombreCliente = document.getElementById("buyerFullName").value,
             apellidoCliente =  document.getElementById("inputApellidos").value,
-            direccionCliente = document.getElementById("inputDireccion").value,
+            direccionCliente = document.getElementById("shippingAddress").value,
             barrioCliente = document.getElementById("inputDireccionDetalle").value,
-            telefonosCliente   =   document.getElementById("inputTelefono").value,
-            correoCliente  =   document.getElementById("inputCorreo").value,
+            telefonosCliente   =   document.getElementById("telephone").value,
+            correoCliente  =   document.getElementById("buyerEmail").value,
             departamentoCliente = selected,
-            ciudadCliente  =   document.getElementById("inputCiudad").value,
+            ciudadCliente  =   document.getElementById("shippingCity").value,
             pago    =   document.getElementById("inputPago").value,
         ];
         //Array completo con el pedido y datos del usuario
@@ -93,27 +110,28 @@ const FormCompra  = ()  => {
         }
         //array que se usara para mostrar mensaje de validacion de campos
         let infoClienteText=    [
-            nombre = document.getElementById("inputNombre").placeholder,
+            nombre = document.getElementById("buyerFullName").placeholder,
             apellido =  document.getElementById("inputApellidos").placeholder,
-            direccion = document.getElementById("inputDireccion").placeholder,
+            direccion = document.getElementById("shippingAddress").placeholder,
             barrio = document.getElementById("inputDireccionDetalle").placeholder,
-            telefonos   =   document.getElementById("inputTelefono").placeholder,
-            correo  =   document.getElementById("inputCorreo").placeholder,
+            telefonos   =   document.getElementById("telephone").placeholder,
+            correo  =   document.getElementById("buyerEmail").placeholder,
             departamento =  document.getElementById("inputDepartamento").value,
-            ciudad  =   document.getElementById("inputCiudad").value,
+            ciudad  =   document.getElementById("shippingCity").value,
         ];
 
         let itemValidar =   0;
-        let arrayLength = infoCliente.length;        
+        let arrayLength = infoCliente.length;       
         for(itemValidar=0;itemValidar<arrayLength;itemValidar++){
-            if(infoCliente[itemValidar] === '' || infoCliente[itemValidar] === 'Departamento' || infoCliente[itemValidar] === 'Ciudad'){
+            if(infoCliente[itemValidar] === ''/* || infoCliente[itemValidar] === 'Departamento' || infoCliente[itemValidar] === 'Ciudad'*/){
                 validacion = false
                 alert('El campo ' + infoClienteText[itemValidar] + ' esta vacio');
             }
         }
         if(validacion){
         localStorage.setItem('envioPedido', JSON.stringify(PedidoEnviar));
-        alert('¡' + 'Hola ' +  nombreCliente +'!, '  + ' Gracias por tu pedido, ' + 'Tu referencia de Pago es ' + referenciaPago);
+        console.log(ObjetoEnviado);
+        alert('¡Información Importante!\n'+'¡' + 'Hola ' +  nombreCliente +'!, '  + ' Debes pagar el costo del envío al momento de recibir el paquete, teniendo en cuenta que este varia de acuerdo al lugar de recidencia, el envío se hara por medio de Servientrega, el numero de guia se te enviara por correo electronico o celular suministrados ' + '\nTu número de pedido es: ' + referenciaPago);
         //let cleanPedido =   '';
         //localStorage.setItem('pedidoCompleto',cleanPedido);
         //let CarroDeCompras  =   [];
@@ -165,33 +183,34 @@ const FormCompra  = ()  => {
                     <h3>Datos de Facturación</h3>                
                 </div>
                 <div className="containerForm">
-                    <form method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">  
+                    <form method="post" action="https://checkout.payulatam.com/ppp-web-gateway-payu/">  
+                    <div><p className="ParrafoForm">Los campos con el simbolo (*) son requeridos</p></div>
                         <div className="form-row">
                         <div className="form-group col-md-6">
-                            <label className="input" for="inputNombre">Nombre</label>
-                            <input type="text" className="form-control" id="inputNombre" placeholder="Nombres"></input>
+                            <label className="input" for="buyerFullName">Nombre</label>
+                            <input type="text" className="form-control" name="buyerFullName" id="buyerFullName" placeholder="(*) Nombres" required></input>
                             </div>
                             <div className="form-group col-md-6">
                             <label className="input" for="inputApellidos">Apellidos</label>
-                            <input type="text" className="form-control" id="inputApellidos" placeholder="Apellidos"></input>
+                            <input type="text" className="form-control" id="inputApellidos" placeholder="(*) Apellidos" required></input>
                             </div>
                         </div>
                         <div className="form-group">
-                            <label className="input" for="inputDireccion">Dirección</label>
-                            <input type="text" className="form-control" id="inputDireccion" placeholder="Dirección"></input>
+                            <label className="input" for="shippingAddress">Dirección</label>
+                            <input type="text" className="form-control" name="shippingAddress" id="shippingAddress" placeholder="(*) Dirección" required></input>
                         </div>
                         <div className="form-group">
                             <label className="input" for="inputDireccionDetalle">Barrio</label>
-                            <input type="text" className="form-control" id="inputDireccionDetalle" placeholder="Barrio, Apartamento, Oficina, Piso, Torre, Casa"></input>
+                            <input type="text" className="form-control" id="inputDireccionDetalle" placeholder="(*) Barrio, Apartamento, Oficina, Piso, Torre, Casa" required></input>
                         </div>
                         <div className="form-row">
                         <div className="form-group col-md-6">
-                            <label className="input" for="inputTelefono">Teléfono/Celular</label>
-                            <input type="text" className="form-control" id="inputTelefono" placeholder="Teléfono"></input>
+                            <label className="input" for="telephone">Teléfono/Celular</label>
+                            <input type="text" className="form-control" name="telephone" id="telephone" placeholder="(*) Teléfono" required></input>
                             </div>
                             <div className="form-group col-md-6">
-                            <label className="input" for="inputCorreo">Corre Electrónico</label>
-                            <input type="email" className="form-control" id="inputCorreo" placeholder="Correo electrónico"></input>
+                            <label className="input" for="buyerEmail">Corre Electrónico</label>
+                            <input type="email" className="form-control" name="buyerEmail" id="buyerEmail" placeholder="(*) Correo electrónico" required></input>
                             </div>
                         </div>
                         <div className="form-row">
@@ -202,30 +221,39 @@ const FormCompra  = ()  => {
                             </select>                           
                             </div>
                             <div className="form-group col-md-6">
-                            <label className="input" for="inputCiudad">Ciudad</label>
-                            <select id="inputCiudad" className="form-control">
+                            <label className="input" for="shippingCity">Ciudad</label>
+                            <select name="shippingCity" id="shippingCity" className="form-control">
                                 <option selected>Ciudad</option>   
                                 {selectCiudadesCompose}                 
                             </select>
-                            </div>   
+                            </div>  
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="Check" required></input>
+                                <label class="form-check-label" for="Check"><p className="ParrafoForm">Aceptar terminos y condiciones de manejo de datos personales y envíos</p></label>
+                            </div> 
                             <div className="form-group col-md-6">
                             <label className="input" for="inputPago">Medio de Pago</label>
                             <select id="inputPago" className="form-control">
                                 <option selected>Referencia de Pago</option>
+                                <option>Recoger en Tienda</option>
                             </select>
                             </div>  
                             <div className="form-row">
-                                <input name="merchantId" value="508029" type="hidden" className="form-control"></input>
-                                <input name="api_key" value= "4Vj8eK4rloUd272L48hsrarnUA" type="hidden" className="form-control"></input>
-                                <input name="cuentaId" value="512326" type="hidden" className="form-control"></input>
-                                <input name="refVenta" value={referenciaPago} type="hidden" className="form-control"></input>
+                                <input name="merchantId" value= {898269} type="hidden" className="form-control"></input>
+                                <input name="apiKey" value= "ME7cLWx8UCl5f7kZo592rk0Bug" type="hidden" className="form-control"></input>
+                                <input name="accountId" value={904887} type="hidden" className="form-control"></input>
+                                <input name="referenceCode" value={referenciaPago} type="hidden" className="form-control"></input>
                                 <input name="usuarioId" value={referenciaPago} type="hidden" className="form-control"></input>
-                                <input name="descripcion" value="Café 100% Colombiano" type="hidden" className="form-control"></input>
-                                <input name="valor" value={pedido.totalPagar} type="hidden" className="form-control"></input>
+                                <input name="description" value="Café 100% Colombiano" type="hidden" className="form-control"></input>
+                                <input name="amount" value={pedido.totalPagar} type="hidden" className="form-control"></input>
                                 <input name="currency" value="COP" type="hidden" className="form-control"></input>
-                                <input name="responseUrl"    type="hidden"  value="http://192.168.0.22:3000/"></input>
-                                <input name="confirmationUrl"    type="hidden"  value="http://192.168.0.22:3000"></input>
-                               
+                                <input name="tax" value={0} type="hidden" className="form-control"></input>
+                                <input name="taxReturnBase" value = {0} type="hidden" className="form-control"></input>
+                                <input name="responseUrl"    type="hidden"  value="https://www.facebook.com/CafeZenn"></input>
+                                <input name="confirmationUrl"    type="hidden"  value="https://www.facebook.com/CafeZenn"></input>
+                                <input name="shippingCountry" value="CO" type="hidden" className="form-control"></input>
+                                <input name="signature" value={signature} type="hidden" className="form-control"></input>
+
                             </div> 
                             <div className="form-group col-md-6"> 
                                 <div className="container">                        

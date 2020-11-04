@@ -28,10 +28,19 @@ h1, h2, h3, h4, h5, h5, p, .navbar, .input {
 .ItemHover{
     color: white;
 }
+.ItemHoverInicio{
+    font-size: 1.3rem;
+    color: white;
+}
 .active{
     color: rgb(223, 166, 126);
 }
 .ItemHover:hover{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+.ItemHoverInicio:hover{
     text-decoration: none;
     color: white;
     font-weight: bold;
@@ -106,7 +115,9 @@ h1, h2, h3, h4, h5, h5, p, .navbar, .input {
     margin-bottom: 10%;
    }
 /**Estilos Para las tarjetas de productos*/
-
+.card{
+    max-height: 500px;
+}
 .card-img-top{
     width: 100%;
     height: auto;
@@ -162,6 +173,13 @@ h1, h2, h3, h4, h5, h5, p, .navbar, .input {
     width: 100%;
     
 }
+.CarroVacio{
+    font-size: x-large;
+    margin-top: -5%;
+    width: 100%;
+    height: 200px;
+    text-align: center;
+}
 .containerTotal{
 margin-top: -10%;
 }
@@ -182,7 +200,7 @@ text-align: start;
 }
 }
 .btn2{
-    margin-top: 9%;   
+    margin-top: 7%;   
     width: 90%; 
 }
 .containerForm{
@@ -195,6 +213,9 @@ text-align: start;
     border-top: 1px solid rgb(105, 101, 101);
     margin-top: -10%;
     align-items: center;
+}
+.img-fluid{
+    max-height: 100px;
 }
 .row-filaFooter {
     border-bottom: 1px solid rgb(105, 101, 101);
@@ -212,3 +233,10 @@ text-align: start;
 .carousel {
     margin-top: -15%;
 }
+.ParrafoForm{
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+.credit{
+    color: white;
+  }
