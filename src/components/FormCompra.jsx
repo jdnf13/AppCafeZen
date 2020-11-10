@@ -129,7 +129,7 @@ const FormCompra  = ()  => {
             }
         }
         if(validacion){
-        alert('¡Información Importante!\n'+'¡' + 'Hola ' +  buyerFullName +'! '  + ' Debes pagar el costo del envío al momento de recibir el paquete, teniendo en cuenta que este varia de acuerdo al lugar de recidencia, el envío se hara por medio de Servientrega, el numero de guia se te enviara por correo electronico o celular suministrados ' + '\nTu número de pedido es: ' + referenciaPago);
+        alert('¡Información Importante!\n'+'¡' + 'Hola ' +  buyerFullName +'! '  + ' El pedido sera enviado contraentrega, el costo varia de acuerdo al lugar de recidencia, el envío se hara por medio de Servientrega, el numero de guia se te enviara por correo electronico o celular suministrados ' + '\nTu número de pedido es: ' + referenciaPago);
         
         let data=    infoCliente;
         console.log('Datos Enviados al Correo = ',data);
