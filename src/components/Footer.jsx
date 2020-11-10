@@ -16,7 +16,7 @@ const Footer    =   ()  =>  {
                     <div className="col-lg-2 col-md-12 mb-4">                    
                     <div className="view overlay z-depth-1-half">
                         <img src={SlideFooter1} className="img-fluid" alt=""></img>                     
-                        <a href="">
+                        <a>
                         <div className="mask rgba-white-light"></div>
                         </a>
                     </div>
@@ -24,7 +24,7 @@ const Footer    =   ()  =>  {
                     <div className="col-lg-2 col-md-6 mb-4">
                     <div className="view overlay z-depth-1-half">
                         <img src={SlideFooter2} className="img-fluid"></img>                        
-                        <a href="">
+                        <a>
                         <div className="mask rgba-white-light"></div>
                         </a>
                     </div>
@@ -32,7 +32,7 @@ const Footer    =   ()  =>  {
                     <div className="col-lg-2 col-md-6 mb-4">
                     <div className="view overlay z-depth-1-half">
                         <img src={SlideFooter3} className="img-fluid"></img>                        
-                        <a href="">
+                        <a>
                         <div className="mask rgba-white-light"></div>
                         </a>
                     </div>
@@ -41,7 +41,7 @@ const Footer    =   ()  =>  {
                     <div className="view overlay z-depth-1-half">
                         <img src={SlideFooter4} className="img-fluid"
                         alt=""></img>
-                        <a href="">
+                        <a>
                         <div className="mask rgba-white-light"></div>
                         </a>
                     </div>
@@ -50,7 +50,7 @@ const Footer    =   ()  =>  {
                     <div className="view overlay z-depth-1-half">
                         <img src={SlideFooter5} className="img-fluid"
                         alt=""></img>
-                        <a href="">
+                        <a>
                         <div className="mask rgba-white-light"></div>
                         </a>
                     </div>
@@ -59,7 +59,7 @@ const Footer    =   ()  =>  {
                     <div className="view overlay z-depth-1-half">
                         <img src={SlideFooter6} className="img-fluid"
                         alt=""></img>
-                        <a href="">
+                        <a>
                         <div className="mask rgba-white-light"></div>
                         </a>
                     </div>

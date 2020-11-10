@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import {NavLink} from 'react-router-dom';
+//import Carro from '../components/Carro';
 import '../css/App.css';
-import Carro from '../components/Carro';
-import Tienda from '../components/Tienda';
+//import Tienda from '../components/Tienda';
 
 const Card  =   (props)  =>  {
     let style={
@@ -10,8 +11,8 @@ const Card  =   (props)  =>  {
         background: "-webkit-linear-gradient(to bottom, #434343, #000000)",  /* Chrome 10-25, Safari 5.1-6 */
         background: "linear-gradient(to bottom, #434343, #000000)", 
         border: "0px solid #131212",
-        mozBorderRadius: "15px",
-        webkitBorderRadius:"15px",
+        borderRadius: "15px",
+        //webkitBorderRadius:"15px",
         padding: "-1px",
     }
 
@@ -63,11 +64,7 @@ const Card  =   (props)  =>  {
         ]; 
         props.onClick(event,arrayItems);       
         arrayCarro.push(arrayItems);
-        let eventoClick = [
-            <Tienda
-                clickEvento = {cant}
-            />
-        ];    
+        //let eventoClick = [<Tienda  clickEvento = {cant} /> ];    
          }
     
     const onClickQuitar  =   (event)  =>{
@@ -108,7 +105,10 @@ return(
                     </div>
                     <div className="container">
                         <p className="cantidadItems">Unidades Añadidas</p>
-                    </div>                    
+                    </div>   
+                    <div className="container">
+                        <NavLink to="/Carro" className="btn btn-dark">Pagar</NavLink>
+                    </div>                   
                 </div>
             </div>    
         </div>

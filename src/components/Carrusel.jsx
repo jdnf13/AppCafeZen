@@ -12,7 +12,7 @@ function Carrusel () {
         return (
             <div id="carrusel" className="carousel slide" data-ride="carousel">
                 <ol className="carousel-indicators">
-                    <li data-target="#carrusel" data-slide-to={Slider1} class="active"></li>
+                    <li data-target="#carrusel" data-slide-to={Slider1} className="active"></li>
                     <li data-target="#carrusel" data-slide-to={Slider2}></li>
                     <li data-target="#carrusel" data-slide-to={Slider3}></li>
                     <li data-target="#carrusel" data-slide-to={Slider4}></li>                    
