@@ -32,25 +32,12 @@ const Card  =   (props)  =>  {
     let arrayItems  =   [];
     let arrayCarro  =   [];
     let cantidad=   0;
-    /*let cantidadLocal   =   '0';
-    let cantidad    =   localStorage.getItem('otrocampo');
-    if(cantidad === 0 || cantidad === null || cantidad === '' || cantidad === ' '){
-        cantidadLocal   =   0
-        console.log('localStorage sin Cantidad', cantidad);
-    }else{
-        console.log('cantidad en localStorage', cantidad);
-        cantidadLocal   =   cantidad;
-    }*/
 
     
     
     const [cant, setCant]   =   useState(0);
 
     const onClickAñadir  =   (event)  =>{
-        /*let recuperaCantidad    =   localStorage.getItem('otrocampo');
-        console.log('LocalStorage ==>', recuperaCantidad);
-        let nuevaCantidad = '1';
-        localStorage.setItem('otrocampo',nuevaCantidad);*/
         
         event.preventDefault();        
         setCant(cant + 1);
@@ -63,8 +50,7 @@ const Card  =   (props)  =>  {
          }          
         ]; 
         props.onClick(event,arrayItems);       
-        arrayCarro.push(arrayItems);
-        //let eventoClick = [<Tienda  clickEvento = {cant} /> ];    
+        arrayCarro.push(arrayItems);   
          }
     
     const onClickQuitar  =   (event)  =>{
