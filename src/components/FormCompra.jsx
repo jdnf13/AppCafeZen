@@ -71,7 +71,7 @@ const FormCompra  = ()  => {
     }
     
     const onClickFinalizarPedido = (event)  =>  {
-        event.preventDefault();
+        //event.preventDefault();
         //////////////// Metodo para obtener el texto del select a partir del id
         let combo    =   document.getElementById("inputDepartamento");
         let selected    =   combo.options[combo.selectedIndex].text;
@@ -108,6 +108,18 @@ const FormCompra  = ()  => {
             description = document.getElementById("description").value,
             referencecode = document.getElementById("referenceCode").value,
         ]
+        let infoClienteEndpiont = {
+            buyerFullName : document.getElementById("buyerFullName").value,
+            inputApellidos :  document.getElementById("inputApellidos").value,
+            shippingAddress : document.getElementById("shippingAddress").value,
+            inputDireccionDetalle : document.getElementById("inputDireccionDetalle").value,
+            telephone   :   document.getElementById("telephone").value,
+            buyerEmail  :   document.getElementById("buyerEmail").value,
+            inputDepartamento : selected,
+            shippingCity  :   document.getElementById("shippingCity").value,
+            description : document.getElementById("description").value,
+            referencecode : document.getElementById("referenceCode").value,
+        }
         //array que se usara para mostrar mensaje de validacion de campos
         let infoClienteText=    [
             nombre = document.getElementById("buyerFullName").placeholder,
@@ -131,8 +143,10 @@ const FormCompra  = ()  => {
         if(validacion){
         alert('¡Información Importante!\n'+'¡' + 'Hola ' +  buyerFullName +'! '  + ' El pedido sera enviado contraentrega, el costo varia de acuerdo al lugar de recidencia, el envío se hara por medio de Servientrega, el numero de guia se te enviara por correo electronico o celular suministrados ' + '\nTu número de pedido es: ' + referenciaPago);
         
-        let data=    infoCliente;
-        console.log('Datos Enviados al Correo = ',data);
+        let data=    infoClienteEndpiont;
+        /////////////////Limpiamos el localStorage////////////////////////
+        let CarroDeCompras  =   [];
+        localStorage.setItem('articulos',JSON.stringify(CarroDeCompras));   
         /////////////Metodo para enviar endpoint al API para enviar datos al correo
         fetch("https://tienda.micafezen.com/api/payu", {
             method: 'POST',   
@@ -140,11 +154,7 @@ const FormCompra  = ()  => {
               Accept: "application/json", "Content-Type": "application/json",
               Authorization: "token 900ff9a08db741d3a0da3782d3b47dd171b1b65d",
             },           
-            body:   JSON.stringify(data)}).then(response => response.json()).then(data => {      
-                    console.log('Datos Enviados al Correo = ',data); 
-                    /////////////////Limpiamos el localStorage////////////////////////
-                    let CarroDeCompras  =   [];
-                    localStorage.setItem('articulos',JSON.stringify(CarroDeCompras));           
+            body:   JSON.stringify(data)}).then(response => response.json()).then(data => {       
             });
         }
          
