@@ -14,16 +14,17 @@ function App() {
     <div className= "App">
       <div className="Banner">
         <div className="center-image">
-          <img
+          <a href="https://micafezen.com"><img
             src={LogoBanner}
             alt={LogoBanner}
             className="imageBanner"
             
-          ></img>
+          ></img></a>
         </div>
         <nav className="navbar navbar-dark">
           <NavLink to="/Tienda" className="navbar-brand"><p className="ItemHover">Tienda</p></NavLink>
           <NavLink to="/Carro" className="navbar-brand" activeClassName="active"><p className="ItemHover">Carrito</p></NavLink>
+          <a href="https://micafezen.com" className="navbar-brand"><p className="ItemHover">Inicio</p></a>
          {/*<a className="ItemHoverInicio" href="http://127.0.0.1:5500/index.html">Inicio</a>*/}
           {
           //<NavLink to="/Compra" className="navbar-brand" activeClassName="active"><a className="ItemHover">Datos</a></NavLink>   
