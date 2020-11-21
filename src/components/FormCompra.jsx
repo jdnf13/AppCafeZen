@@ -149,7 +149,8 @@ const FormCompra  = ()  => {
         let data=    infoClienteEndpiont;
         /////////////////Limpiamos el localStorage////////////////////////
         let CarroDeCompras  =   [];
-        localStorage.setItem('articulos',JSON.stringify(CarroDeCompras));   
+        localStorage.setItem('articulos',JSON.stringify(CarroDeCompras));                  
+        console.log('data enviada al api', data);   
         /////////////Metodo para enviar endpoint al API para enviar datos al correo
         fetch("https://tienda.micafezen.com/api/payu", {
             method: 'POST',   
@@ -157,7 +158,7 @@ const FormCompra  = ()  => {
               Accept: "application/json", "Content-Type": "application/json",
               Authorization: "token 900ff9a08db741d3a0da3782d3b47dd171b1b65d",
             },           
-            body:   JSON.stringify(data)}).then(response => response.json()).then(data => {       
+            body:   JSON.stringify(data)}).then(response => response.json()).then(data => {     
             });
         }
          
