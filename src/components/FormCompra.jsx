@@ -121,7 +121,7 @@ const FormCompra  = ()  => {
             shippingCity  :   document.getElementById("shippingCity").value,
             description : document.getElementById("description").value,
             referencecode : document.getElementById("referenceCode").value,
-            totalpedido: pedido.totalPagar,
+            totalpedido: pedido.totalPagar
         }
         //array que se usara para mostrar mensaje de validacion de campos
         let infoClienteText=    [
