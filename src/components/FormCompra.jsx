@@ -31,7 +31,7 @@ const FormCompra  = ()  => {
     let itemPedido = 0;
     let descripcionPedido = [];
     for(itemPedido=0;itemPedido < pedidoLength; itemPedido++){
-        let prod = pedido.pedido[itemPedido].Cantidad + pedido.pedido[itemPedido].Producto;
+        let prod = pedido.pedido[itemPedido].Cantidad + " " + pedido.pedido[itemPedido].Producto;
         descripcionPedido.push(prod);
     }
     let descipcionCompra =JSON.stringify(descripcionPedido);
