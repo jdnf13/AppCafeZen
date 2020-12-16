@@ -35,6 +35,9 @@ const FormCompra  = ()  => {
         descripcionPedido.push(prod);
     }
     let descipcionCompra =JSON.stringify(descripcionPedido);
+    let resultado = descipcionCompra.replace(/[^a-zA-Z 0-9.]+/g,' ');
+
+    //console.log('descripcion Pedido ---- ', resultado);
     //let validacion = true;
     let RecuperaDepartamentos   =   localStorage.getItem('ListaDepartamentos');
     let Departamentos   =   JSON.parse(RecuperaDepartamentos);
@@ -121,7 +124,7 @@ const FormCompra  = ()  => {
             shippingCity  :   document.getElementById("shippingCity").value,
             description : document.getElementById("description").value,
             referencecode : document.getElementById("referenceCode").value,
-            totalpedido: pedido.totalPagar
+            totalpedido: pedido.totalPagar.toString()
         }
         //array que se usara para mostrar mensaje de validacion de campos
         let infoClienteText=    [
@@ -269,7 +272,7 @@ const FormCompra  = ()  => {
                                 <input key="input3" name="accountId" value={904887} type="hidden" className="form-control"></input>
                                 <input key="input4" id="referenceCode" name="referenceCode" value={referenciaPago} type="hidden" className="form-control"></input>
                                 <input key="input5" name="usuarioId" value={referenciaPago} type="hidden" className="form-control"></input>
-                                <input key="input6" id='description' name="description" value={descipcionCompra} type="hidden" className="form-control"></input>
+                                <input key="input6" id='description' name="description" value={resultado} type="hidden" className="form-control"></input>
                                 <input key="input7" name="amount" value={pedido.totalPagar} type="hidden" className="form-control"></input>
                                 <input key="input8" name="currency" value="COP" type="hidden" className="form-control"></input>
                                 <input key="input9" name="tax" value={0} type="hidden" className="form-control"></input>
